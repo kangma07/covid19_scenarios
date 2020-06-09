@@ -3,7 +3,7 @@
 </h1>
 
 <blockquote align="center">
-Models of COVID-19 outbreak trajectories and hospital demand
+COVID-19의 발생 경로 및 병원 수요에 대한 모델
 </blockquote>
 
 <p align="center">
@@ -223,22 +223,14 @@ Got questions or suggestions?
 👀 Overview
 </h2>
 
-This tool is based on the SIR model (see about page for details) that simulates a COVID19 outbreak. The population is
-initially mostly susceptible (other than for initial cases). Individuals that recover from COVID19 are subsequently
-immune. Currently, the parameters of the model are _not_ fit to data but are simply defaults. These might fit better for
-some localities than others. In particular the initial cases counts are often only rough estimates.
+ 이 도구는 COVID-19 발생을 시뮬레이션하는 SIR 모델(자세한 내용은 페이지 내 참조)을 기반으로 한다. 사람들은 초기에 대부분 C-19에 대해 취약하다.(초기 발생사례 제외). COVID19에서 회복한 사람은 그 후에 면역이 생긴다. (재발 가능성은 있음) COVID19에서 회복된 사람은 그 후에 면역이 됩니다. 
+ 현재의 데이터에 기본값이므로 부적합하긴합니다.이것들은 다른 지역보다 어떤 지역에 더 잘 맞을 수 있습니다. 특히 초기 사례의 개수는 대개 대략적인 추정치일 뿐입니다. 이 시뮬레이터는 특정 지역에서는 데이터값이 잘 맞을 수 있지만 다른 지역에서는 부정확 할 수 있습니다. 특히 초기때의 측정수는 대략적인 추정치 입니다. 
 
-The primary purpose of the tool is to explore the dynamics of COVID19 cases and the associated strain on the health care
-system in the near future. The outbreak is influenced by infection control measures such as school closures, lock-down
-etc. The effect of such measures can be included in the simulation by adjusting the mitigation parameters. Analogously,
-you can explore the effect of isolation on specific age groups in the column "Isolated" in the table on severity
-assumptions and age specific isolation.
+이 시뮬레이터의 주요 목적은 COVID19 사례의 역학 조사와 의료 서비스 관련에 대한 변화를 조사하는 것입니다. 이번 발병은 학교 폐쇄, 각종 폐쇄 같은 감염관리 조치에 의해 영향을 받습니다. 완화 매개 변수를 조정하여 이런 측정의 효과를 시뮬레이션에 포합 시킬 수 있습니다. 이와 비슷하게, "Isolated" 열에 있는 특정 연령 그룹에대한 격리 효과를 통해 심각도 측정과 연령별 격리에 대한 표를 살펴 볼 수 있습니다. 심각도 측정 과 연령별 격리에 대한
 
-Most parameters can be adjusted in the tool and for many of them we provide presets (scenarios).
+대부분의 파라미터 값은 도구와 우리가 제공한 프리셋들을 통해 조정 할 수 있습니다.
 
-Input data for the tool and the basic parameters of the populations are collected in the
-[`/data` directory](https://github.com/neherlab/covid19_scenarios/tree/master/data). Please add data on populations and
-parsers of publicly available case count data there.
+시뮬레이터와 기초 매개변수의 입력 데이터들은[`/data` directory](https://github.com/neherlab/covid19_scenarios/tree/master/data)에 수집됩니다. 공개적으로 사용 가능한 데이터와 파서(parser)에 대한 데이터는 /data directory에 추가해세요. 
 
 <h1 align="center" />
 
@@ -246,36 +238,32 @@ parsers of publicly available case count data there.
 📕 User's Guide 
 </h2>
 
-The online application provides a friendly user interface with drop downs to choose model parameters, run the model, and
-export results in CSV format. A detailed process is below.
+이 온라인 애플리케이션은 드롭다운으로 모델의 매개변수를 선택하고 모델을 실행시키면 CSV 형식으로 결과를 내보내는 사용하기 편한 인터페이스를 제공합니다. 자세한 과정은 밑에 계속 됩니다.
 
-### Parameters: population
+### 매개 변수: 인구수 (population)
 
-Select the population drop down and select a country/region to auto-populate the model's parameters with respective UN
-population data. These parameters can be individually updated manually if necessary.
+UN 인구수 모델 매개변수를 자동으로 채울 인구수 드롭박스 와 국가/지역을 각각 선택하세요.
+필요한 경우 매개 변수들을 수동으로 업데이트 할 수 있습니다.
 
-### Parameters: epidemiology
+### 매개 변수: 역학 (epidemiology)
 
-The epidemiology parameters are a combination of speed and region - specifying growth rate, seasonal variation, and
-duration of hospital stay. To choose a preset distribution, select one of the options from the epidemiology drop down to
-auto-populate the model's parameters with the selected parameters.
+역학의 매개변수는 지역과 속도 즉 증가율, 계절 변화 그리고 병원 입원 기간에의해 정해 질 수 있습니다. 
+미리 설정된 분포도를 선택하려면 역학 드롭다운 옵션 중 하나를 선택해서 선택된 매개변수로 모델의 매개변수를 자동으로 입력합니다.
 
-### Parameters: mitigation
+### 매개변수: 완화도 (mitigation)
 
-Mitigation parameters represent the reduction of transmission through mitigation (infection control) measures over time.
-To select a preset, click on the mitigation dropdown and select one of the options. Otherwise, the points on the graph
-can be dragged and moved with the mouse. The parameter ranges from one (no infection control) to zero (complete
-prevention of all transmission).
+완화 매겨변수는 시간 경과에 따른 완화(감염예방)조치를 통해 감소함을 나타냅니다.
+프리셋을 설정하려면 완화(Mitigation)드롭 다운을 클릭하고 옵션을 선택합니다. 다른 방법으론 마우스로 그래프이 점을 이동시켜서 사용 할 수 있습니다. 
+매겨 변수의 범위는 1(감염예방 없음)부터0(완벽한 감염예방)까지 입니다.
 
-### Running the Model
+### 모델 실행
 
-Once the correct parameters are inputted, select the run button located in the Results section of the application. The
-model output will be displayed in 2 graphs: Cases through time and Distribution across groups and 2 tables: Populations
-and Totals/Peak.
+제대로된 매개 변수를 입력했다면 응용 프로그램의 Results 섹션에 있는 Run 버튼을 클릭합니다. 
+모델 출력은 2개의 그래프(Through time and Distribution)로 표기 됩니다. 인구수 와 총 계수/피크 입니다.
 
-### Exporting Results
+### 결과
 
-The model's results can be exported in CSV format by clicking the "export" button in the right hand corner.
+오른쪽 모서리에 있는 "export" 버튼을 클릭하면 모델의 결과를 CSV 형식으로 볼 수 있습니다. 
 
 <h1 align="center" />
 
@@ -287,14 +275,14 @@ The model's results can be exported in CSV format by clicking the "export" butto
 
 #### Run natively
 
-Install the requirements:
+설치 요구사항:
 
 - git >= 2.0
-- node.js >= 10 (we recommend installation through [nvm](https://github.com/nvm-sh/nvm) or
+- node.js >= 10 (권장 설치 경로 [nvm](https://github.com/nvm-sh/nvm) or
   [nvm-windows](https://github.com/coreybutler/nvm-windows))
 - 1.0 < yarn < 2.0
 
-Then in your terminal type:
+터미널 타입:
 
 ```bash
 git clone --recursive https://github.com/neherlab/covid19_scenarios
@@ -305,67 +293,66 @@ yarn dev
 
 ```
 
-(on Windows, substitute `cp` with `copy`)
+(윈도우 운영체제에선, `cp` with `copy` 로 대체)
 
-This will trigger the development server and build process. Wait for the build to finish, then navigate to
-`http://localhost:3000` in a browser (last 5 versions of Chrome or Firefox are supported in development mode).
+이렇게 하면 개발 서버와 빌드 프로세스가 트리거 됩니다. 빌드가 완료될 때가지 기다린 다음 브라우저(`http://localhost:3000`)로 이동됩니다.
+(개발 모드에서는 최근 5가지 버전의 Chrome 또는 Firefox 버전이 지원됩니다.)
 
 > ℹ️ Hint: type "rs<Enter>" in terminal to restart the build
 
 > ℹ️ Hit Ctrl+C in to shutdown the server
 
-#### Run in docker container
+#### docker container 실행
 
-Install the requirements:
+설치 요구사항:
 
 - Docker > 19.0
 - docker-compose >= 1.25
 
-Run docker-compose with `docker/docker-compose.dev.yml` file:
+`docker/docker-compose.dev.yml`파일을 사용하여 docker-compose를 실행합니다.:
 
 ```
 UID=$(id -u) docker-compose -f docker/docker-compose.dev.yml up --build
 
 ```
+변수 'UID'는 Unix 사용자 ID로 설정해야 합니다. 단일 사용자 설정에서는 일반적으로 Linux는 1000개, Mac은 523개 입니다.
 
-Variable `UID` should be set to your Unix user ID. On single-user setups these are usually 1000 on Linux and 523 on Mac.
+### 디렉토리 구조
 
-### Directory Structure
-
-As a developer you are most likely interested in the actual source code in `src/` directory.
+개발자라면 여러분들은 "src/" 디렉토리의 실제 소스코드에 관심이 있으실 겁니다.
 
 | File or directory      | Contents                                      |
 | ---------------------- | --------------------------------------------- |
-| 📁algorithims/         | Algorithm's implementation                    |
-| ├📄model.ts/           | Model's implementation                        |
-| ├📄run.ts/             | Algorithm's entry point                       |
-| 📁assets/              | Input data, images, and text assets           |
-| 📁components/          | React components                              |
-| ├📁Form/               | Form components                               |
-| ├📁Main/               | Simulator's UI main component implementation  |
-| &#124; ├📁Containment/ | Containment widget                            |
-| &#124; ├📁Results/     | Results panel                                 |
-| &#124; ├📁Scenario/    | Scenario panel                                |
-| &#124; ├📁state/       | Main component's state management (hooks)     |
-| &#124; ├📁validation/  | Form validation                               |
-| &#124; ├📄Main.scss/   |                                               |
-| &#124; ├📄Main.tsx/    | Simulator's UI main component entry point     |
-| ├📄App.tsx/            | App main component                            |
-| 📁locales/             | Locales for translation                       |
-| 📁pages/               | Application's pages                           |
-| 📁server/              | Server that serves production build artifacts |
-| 📁state/               | App state management (Redux and sagas)        |
-| 📁styles/              | Stylesheets                                   |
-| 📁types/               | Typescript typings                            |
-| 📄index.ejs            | HTML template                                 |
-| 📄index.polyfilled.ts  | Entry point wrapper with polyfills            |
+| 📁algorithims/         | 알고리즘 구현                                  |
+| ├📄model.ts/           | 모델 구현                                      |
+| ├📄run.ts/             | 알고리즘 접속지점                               |
+| 📁assets/              | 데이터, 이미지 및 텍스트들을 입력                |
+| 📁components/          | 구성 요소 관련                                 |
+| ├📁Form/               | Form 구성 요소                                 |
+| ├📁Main/               | 시뮬레이터의 주요 UI 구성요소 구현               |
+| &#124; ├📁Containment/ | Containment 위젯                               |
+| &#124; ├📁Results/     | 결과 패널                                      |
+| &#124; ├📁Scenario/    | 시나리오 패널                                   |
+| &#124; ├📁state/       | 주요 구성요소 관리 (hooks)                      |
+| &#124; ├📁validation/  | Form 유효성 검사                               |
+| &#124; ├📄Main.scss/   |                                                |
+| &#124; ├📄Main.tsx/    | 시뮬레이션의 주요 UI 구성요소 부분               |
+| ├📄App.tsx/            | 앱의 주요 구성요소                              |
+| 📁locales/             | 번역 요소                                      |
+| 📁pages/               | 앱플리케이션 페이지                             |
+| 📁server/              | 프로덕션 빌드 아티팩트를 제공하는 서버           |
+| 📁state/               | 앱 상태관리 (Redux 또는 sagas)                 |
+| 📁styles/              | 스타일시트                                     |
+| 📁types/               | 서식 입력부분                                  |
+| 📄index.ejs            | HTML 템플릿                                    |
+| 📄index.polyfilled.ts  | Polyfill이 있는 부분                           |
 | 📄index.tsx            | Real entry point                              |
-| 📄links.ts             | Navbar links                                  |
-| 📄routes.ts            | Routes (URL-to-page mapping)                  |
+| 📄links.ts             | Navbar 링크                                   |
+| 📄routes.ts            | Routes (URL-to-page 맵핑)                     |
 
-### Production build
+### 프로덕션 빌드
 
-In order to replicate the production build locally, use this command:
+프로덕션 빌드를 로컬 형태로 복사하려면 밑의 명령어를 사용해야 합니다.
 
 ```bash
 
@@ -373,57 +360,55 @@ yarn prod:watch
 
 ```
 
-This should build the application in production mode and to start static server that will serve the app on
-`http://localhost:8080` (by default)
+이렇게 하면 애플리케이션이 프로덕션 모드로 구축되고 앱을 제공할 서버가 시작됩니다. `http://localhost:8080` (기본값)
+
 
 # Schemas
 
-The directory `schemas/` contains JSON schemas which serve as a base for type checking, validation and serialization.
+`schemas/` 디렉토리에는 타입 검사, 유효성 검사 및 직렬화의 기반이 되는 JSON 스키마가 포함 되어있습니다.
 
-In particular, some of the types:
+일부 유형은 밑에 나열되어 있습니다.:
 
-- are generated from schemas for both Python (as classes) and Typescript (as interfaces)
-- are validated on runtime using corresponding libraries in these languages
-- are (when appropriate) serialized and deserialized using generated serialization/deserialized functions
+- Python(클래스) 및 Typecript(인터페이스)는 스키마에서 생상됩니다.
+- 해당 언어의 라이브러리를 사용하여 런타임에 대한 유효성을 검사 할 수 있습니다.
+- 생선된 직렬화/역직렬화 함수를 사용하여 직렬화 및 역직렬화가 됩니다. 
 
-We make emphasis on types that are shared across languages (e.g. Python to Typescript) as well as on types that
-participate in input-output (e.g. URLs, Local Storage, File I/O) and require particularly careful validation and
-serialization.
+우리는 언어간 공유되는 유형( Python to Typecript )뿐만 아니라 입출력( URL, 로컬 저장소, 파일 I/O )에 관여를 하는데,
+특히 세심한 검증과 직렬화가 필요할때 관여를 합니다.
 
-If you are planning to change one of the types that happens to be generated, you need to modify the corresponding schema
-first and them re-run the type generation.
+만약 사용자가 생성되어 있는 타입 중 하나를 변경 할때는 해당 스키마를 수정하고 그 타입을 재시작 해야합니다
 
-#### See also:
+#### 참고:
 
 - [JSON Schema website](https://json-schema.org/)
 - [Understanding JSON Schema](https://json-schema.org/understanding-json-schema/)
 
-### Release cycle, continuous integration and deployment
+### 릴리즈 주기, 지속적 통합 및 배포
 
 TODO
 
-### Getting Started
+### 시작 할 때
 
-For new contributers, follow the guide below to learn how to install required software, fork & clone, and submit changes
-using a pull request.
-
+신규 사용자는 아래 안내에 따라 필요한 소프트웨어 설치와 포크 & 클론 복제 및 풀 요청을 사용하여 변경사을 제출하는 방법을 알아두어야 합니다.
 #### ✨ Installing Required Software
 
-1. Install Git by following GitHub's instructions
+1. 깃허브의 깃을 설치합니다.
    [here](https://help.github.com/en/github/getting-started-with-github/set-up-git)
 
-2. Node.js can be installed using nvm on [Mac/Linux](https://gist.github.com/d2s/372b5943bce17b964a79) and nvm-windows
-   on [Windows](https://docs.microsoft.com/en-us/windows/nodejs/setup-on-windows).
 
-3. Yarn can be globally installed following [these steps](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+2. Node.js는 NVM의 경우 [Mac/Linux](https://gist.github.com/d2s/372b5943bce17b964a79)에서 
+   nvm-window의 경우 [Windows](https://docs.microsoft.com/en-us/windows/nodejs/setup-on-windows)에서 설치 할 수 있습니다.
+
+3. Yarn은 [these steps](https://classic.yarnpkg.com/en/docs/install/#mac-stable)을 통해 설치 할 수 있습니다.
 
 #### 🍴 Forking the Repo
 
-Click the Fork button on the upper right-hand side of the repository’s page.
+Repository 페이지의 오른쪽 상단에 있느 포크 버튼을 클립합니다.
 
 #### 👯 Clone Forked Repository
 
-Clone this repository to your local machine. You can use the URL of your repo inside git command, for example:
+이 Repository를 사용자 컴퓨터에 복제합니다. repo를 git 커맨드를 이용해 URL로 만들 수 있습니다.
+예를 들어:
 
 ```bash
 git clone https://github.com/<YOUR_GITHUB_USERNAME>/covid19_scenarios
@@ -432,30 +417,29 @@ git clone https://github.com/<YOUR_GITHUB_USERNAME>/covid19_scenarios
 
 #### 🔨 Start coding!
 
-#### 💻 Updating the Forked Repository
+#### 💻 Fork된 Repository를 업데이트하는 방법
 
-To ensure that the forked code stays updated, you’ll need to add a Git remote pointing back to the original repository
-and create a local branch.
+Fork된 코드가 계속 업데이트되기 위해선 원래의 repository를 가르키는 Git 리모컨을 추가하고 로컬 분기를 만들어야 합니다.
 
 ```
 git remote add upstream https://github.com/neherlab/covid19_scenarios
 ```
 
-To create and checkout a branch,
+분기를 만들고 확인을 합니다,
 
-1. Create and checkout a branch
+1. 분기를 만들고 확인
 
 ```
 git checkout -b <new branch name>
 ```
 
-2. Make changes to the files
-3. Commit your changes to the branch using `git add` and then `git commit`
+2. 파일 변경
+3. 분기의 변경사항을 커밋 하려면 `git add`과 `git commit`을 사용하면됩니다.
 
-#### 💪 Submitting changes using a Pull Request
+#### 💪 Pull Request를 이용하여 변경사항을 제출합니다.
 
-To submit your code to the repository, you can
-[submit a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+저장소에 코드를 제출하려면 
+[submit a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)을 해야 합니다.
 
 <h1 align="center" />
 
